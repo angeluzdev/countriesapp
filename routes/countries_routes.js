@@ -14,10 +14,20 @@ function navigator() {
 
 function homePage() {
     padreHome.classList.remove('inactive');
+    padreCountry.classList.add('inactive');
     console.log('hola');
     getAllCountries();
+
 }
 function configViewCountry() {
     padreHome.classList.add('inactive');
     padreCountry.classList.remove('inactive');
+    const country = location.hash.split('=');
+    console.log(country)
+    getCountrie(country[1])
 }
+/*document.querySelector('.countries-section').addEventListener('click', (e) => {
+    if(e.target.nodeName == 'ARTICLE') {
+        console.log('hola')
+    }
+})*/
