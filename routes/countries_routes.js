@@ -3,6 +3,7 @@ import { getAllCountries, getCountrie, getCountriesByRegion } from "./../service
 window.addEventListener('hashchange', navigator, false);
 window.addEventListener('DOMContentLoaded', navigator, false);
 const padreHome = document.querySelector('.countries-section');
+const padreCountry = document.querySelector('.countrie-section')
 function navigator() {
     if(location.hash.startsWith('#country=')) {
         configViewCountry();
@@ -18,5 +19,5 @@ function homePage() {
 }
 function configViewCountry() {
     padreHome.classList.add('inactive');
-    //padreCountry.classList.remove('inactive');
+    padreCountry.classList.remove('inactive');
 }
