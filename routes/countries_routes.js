@@ -1,6 +1,9 @@
-window.addEventListener('hashchange', navigator, false);
+import { getAllCountries, getCountrie, getCountriesByRegion } from "./../services/app.js";
 
-function navigation() {
+window.addEventListener('hashchange', navigator, false);
+window.addEventListener('DOMContentLoaded', navigator, false);
+const padreHome = document.querySelector('.countries-section');
+function navigator() {
     if(location.hash.startsWith('#country=')) {
         configViewCountry();
     } else {
@@ -9,5 +12,11 @@ function navigation() {
 }
 
 function homePage() {
-    
+    padreHome.classList.remove('inactive');
+    console.log('hola');
+    getAllCountries();
+}
+function configViewCountry() {
+    padreHome.classList.add('inactive');
+    //padreCountry.classList.remove('inactive');
 }

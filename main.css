@@ -120,3 +120,7 @@ body {
 .container-country__info .country__conatiner-description span {
     font-weight: 600;
 }
+
+.inactive {
+    display: none;
+}

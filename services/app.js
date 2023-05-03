@@ -1,5 +1,5 @@
 import {URL_API} from './../api.js';
-const padre = document.querySelector('.countries-section')
+const padre = document.querySelector('.countries-section');
 async function getAllCountries() {
     const response = await fetch(URL_API+'/all?fields=name,flags,population,region,capital');
     const dat = await response.json();
@@ -32,7 +32,7 @@ async function getCountriesByRegion(region) {
     console.log(data);
 }
 
-
-getCountrie('Belgium')
+export {getAllCountries, getCountrie, getCountriesByRegion};
+//getCountrie('Belgium')
 //getCountriesByRegion('America');
-getAllCountries()
+//getAllCountries()
