@@ -1,8 +1,7 @@
 import {URL_API} from './../api.js';
 const padre = document.querySelector('.main-container')
-console.log(padre)
 async function getAllCountries() {
-    const response = await fetch(URL_API);
+    const response = await fetch(URL_API+'/all?fields=name,flags,population,region,capital');
     const dat = await response.json();
     dat.slice(0,8).forEach(element => {
         const hijo = `<article class="container-country__info">
@@ -18,7 +17,22 @@ async function getAllCountries() {
     </article>`
         padre.innerHTML += hijo;
     });
-    console.log(dat.slice(0,8));
 }
 
+async function getCountrie(country) {
+    const res = await fetch(`${URL_API}/name/${country}?fields=name,flags,population,region,capital,subregion,currencies,languages,tld,borders`);
+    const data = await res.json();
+
+    console.log(data)
+}
+
+async function getCountriesByRegion(region) {
+    const res = await fetch(`${URL_API}/region/${region}?fields=name,flags,population,region,capital`);
+    const data = await res.json();
+    console.log(data);
+}
+
+
+getCountrie('Belgium')
+//getCountriesByRegion('America');
 getAllCountries()
