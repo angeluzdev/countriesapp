@@ -103,6 +103,7 @@ body {
 }
 .container-country__info .container_img, img {
     width: 100%;
+    height: 180px;
 }
 .container-country__info .container_img img {
     object-fit: contain;
