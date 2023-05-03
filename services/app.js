@@ -1,5 +1,5 @@
 import {URL_API} from './../api.js';
-const padre = document.querySelector('.main-container')
+const padre = document.querySelector('.countries-section')
 async function getAllCountries() {
     const response = await fetch(URL_API+'/all?fields=name,flags,population,region,capital');
     const dat = await response.json();

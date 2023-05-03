@@ -89,6 +89,9 @@ body {
     max-width: 1440px;
     min-width: 350px;
     margin: 0 auto;
+    
+}
+.main-container .countries-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     justify-items: center;
