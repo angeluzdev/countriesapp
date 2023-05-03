@@ -124,7 +124,7 @@ body {
 
 .countrie-section .container_button button{
 padding: 7px 30px;
-margin-bottom: 50px;
+margin: 50px 0;
 border-radius: 4px;
 box-shadow: 0 0 8px 0 #c1c1c1;
 border: none;

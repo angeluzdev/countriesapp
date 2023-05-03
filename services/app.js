@@ -48,7 +48,7 @@ async function getCountrie(country) {
                 <p><span>Capital: </span>${data[0].capital}</p>
             </div>
             <div class="dates_right">
-                <p><span>Top Level Domain: </span>${data[0].tld}</p>
+                <p><span>Top Level Domain: </span>${data[0].tld[0]}</p>
                 <p><span>Currencies: </span>België</p>
                 <p><span>Languages: </span>België</p>
             </div>
