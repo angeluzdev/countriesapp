@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Nunito+Sans:wght@300;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="dark.css">
 </head>
 <body>
     <header class="header">
         <div class="header__container">
             <div class="header__pricipal-container">
                 <div class="header__container-content">
-                    <h1>Where in the world</h1>
+                    <h1><a href="/">Where in the world</a></h1>
                     <div class="header__togle-mode">
                         <i class="fa-regular fa-moon"></i>
                         <p>Dark Mode</p>
@@ -24,12 +25,12 @@
 
             <nav class="header__nav">
                 <div class="header__container-content">
-                    <div class="header__container-input">
+                    <form class="header__container-input">
                         <div class="input__icon-container">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                         <input type="text" placeholder="Search for a country..." id="inputSearch">
-                    </div>
+                    </form>
     
                     <div class="header__filter-cotainer">
                         <select name="valueRegion" id="inputSelect">
@@ -60,7 +61,7 @@
                 </div>
 
                 <div class="countrie-section__info">
-                    <div class="countrie_cotainer-img">
+                    <!-- <div class="countrie_cotainer-img">
                         <img src="https://flagcdn.com/w320/de.png" alt="">
                     </div>
 
@@ -89,7 +90,7 @@
                                 <button>Netherlands</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import {URL_API} from './../api.js';
 const padre = document.querySelector('.countries-section');
+const infoCountry = document.querySelector('.countrie-section__info');
 
 const countries = (container, iterable, limit) => {
     iterable.slice(0,limit).forEach(element => {
@@ -24,19 +25,9 @@ const countries = (container, iterable, limit) => {
     })
 }
 
-async function getAllCountries() {
-    const response = await fetch(URL_API+'/all?fields=name,flags,population,region,capital');
-    const dat = await response.json();
-    padre.innerHTML = ''
-    countries(padre, dat, 9)
-}
-
-async function getCountrie(country) {
-    const res = await fetch(`${URL_API}/name/${country}?fields=name,flags,population,region,capital,subregion,currencies,languages,tld,borders`);
-    const data = await res.json();
-    const infoCountry = document.querySelector('.countrie-section__info');
-
-
+const countriev = (container, data) => {
+    const currencies = Object.values(data[0].currencies);
+    const languages = data[0].languages;
     const structHtml = `
     <div class="countrie_cotainer-img">
         <img src="${data[0].flags.png}" alt="">
@@ -54,8 +45,8 @@ async function getCountrie(country) {
             </div>
             <div class="dates_right">
                 <p><span>Top Level Domain: </span>${data[0].tld[0]}</p>
-                <p><span>Currencies: </span>België</p>
-                <p><span>Languages: </span>België</p>
+                <p><span>Currencies: </span>${currencies[0].name}</p>
+                <p id="leng"><span>Languages: </span></p>
             </div>
         </div>
 
@@ -66,7 +57,7 @@ async function getCountrie(country) {
             </div>
         </div>
     `;
-    infoCountry.innerHTML = structHtml; 
+    container.innerHTML = structHtml; 
     const borderContainer = document.querySelector('.borders');
     const buttons = [];
     data[0].borders.forEach(i => {
@@ -81,7 +72,29 @@ async function getCountrie(country) {
 
     borderContainer.append(...buttons);
 
-    console.log(data)
+    const lengp = document.querySelector('#leng');
+    for(const prop in languages) {
+        lengp.innerHTML += languages[prop]+'-';
+    }
+}
+
+async function getAllCountries() {
+    const response = await fetch(URL_API+'/all?fields=name,flags,population,region,capital');
+    const dat = await response.json();
+    padre.innerHTML = ''
+    countries(padre, dat, 9)
+}
+
+async function getCountrie(country) {
+    try {
+        const res = await fetch(`${URL_API}/name/${country}?fields=name,flags,population,region,capital,subregion,currencies,languages,tld,borders`);
+        const data = await res.json(); 
+        
+        countriev(infoCountry, data) 
+    } catch (error) {
+        infoCountry.innerHTML = '<h5 id="message-found">NOT FOUND</h5>'
+    }
+    
 }
 
 async function getCountriesByRegion(region) {
@@ -92,7 +105,12 @@ async function getCountriesByRegion(region) {
     countries(padre, data, -1);
 }
 
-export {getAllCountries, getCountrie, getCountriesByRegion};
-//getCountrie('Belgium')
-//getCountriesByRegion('America');
-//getAllCountries()
+async function getCountrieByCode(code) {
+    const res = await fetch(`${URL_API}/alpha/${code}?fields=name,flags,population,region,capital,subregion,currencies,languages,tld,borders`);
+    const data = await res.json();
+
+    countriev(infoCountry, [data])
+    
+}
+
+export {getAllCountries, getCountrie, getCountriesByRegion, getCountrieByCode};

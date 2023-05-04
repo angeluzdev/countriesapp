@@ -1,0 +1,43 @@
+:root {
+    --dark-blue: hsl(209, 23%, 22%);
+    --very-dark-blue: hsl(207, 26%, 17%);
+    --very-dark-blue-text: hsl(200, 15%, 8%);
+    --very-light-gray : hsl(0, 0%, 98%);
+    --dark-gray: hsl(0, 0%, 98%);
+    --white: hsl(0, 0%, 100%);
+}
+.dark {
+    height: 100vh;
+    background-color: var(--very-dark-blue);
+    color: var(--white);
+}
+
+.dark .header__pricipal-container {
+    background-color: var(--dark-blue);
+}
+
+.dark .header__pricipal-container {
+    box-shadow: none;
+}
+.dark .header__container-input {
+    box-shadow: none;
+    background-color: var(--dark-blue);
+}
+
+.dark #inputSearch {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+::placeholder {
+    color: var(--white);
+}
+
+.dark #inputSelect {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+.dark .container-country__info {
+    box-shadow: none;
+    background-color: var(--dark-blue);
+}
