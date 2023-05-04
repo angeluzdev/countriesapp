@@ -1,10 +1,8 @@
 import {URL_API} from './../api.js';
 const padre = document.querySelector('.countries-section');
-async function getAllCountries() {
-    const response = await fetch(URL_API+'/all?fields=name,flags,population,region,capital');
-    const dat = await response.json();
-    padre.innerHTML = ''
-    dat.slice(0,8).forEach(element => {
+
+const countries = (container, iterable, limit) => {
+    iterable.slice(0,limit).forEach(element => {
         const hijo = `<article class="container-country__info" data-country="${element.name.common}">
         <div class="container__img">
             <img src="${element.flags.png}" alt="">
@@ -16,7 +14,7 @@ async function getAllCountries() {
             <p><span>Capital:</span> ${element.capital[0]}</p>
         </div>
     </article>`
-        padre.innerHTML += hijo;
+        container.innerHTML += hijo;
         
     });
     document.querySelectorAll('.container-country__info').forEach(e => {
@@ -24,6 +22,13 @@ async function getAllCountries() {
             location.hash ='#country='+e.dataset.country;
         })
     })
+}
+
+async function getAllCountries() {
+    const response = await fetch(URL_API+'/all?fields=name,flags,population,region,capital');
+    const dat = await response.json();
+    padre.innerHTML = ''
+    countries(padre, dat, 9)
 }
 
 async function getCountrie(country) {
@@ -68,6 +73,9 @@ async function getCountrie(country) {
         const button = document.createElement('button');
         const text = document.createTextNode(i);
         button.append(text);
+        button.addEventListener('click', () => {
+            location.hash = 'code='+i;
+        })
         buttons.push(button);
     })
 
@@ -79,7 +87,9 @@ async function getCountrie(country) {
 async function getCountriesByRegion(region) {
     const res = await fetch(`${URL_API}/region/${region}?fields=name,flags,population,region,capital`);
     const data = await res.json();
-    console.log(data);
+
+    padre.innerHTML = '';
+    countries(padre, data, -1);
 }
 
 export {getAllCountries, getCountrie, getCountriesByRegion};
